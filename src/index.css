@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /* Professional Base Colors */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 18%;
+
+    /* Instagram Purple as Primary */
+    --primary: 276 56% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Section background - light gray */
+    --secondary: 276 56% 95%;
+    --secondary-foreground: 220 20% 18%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Instagram Pink as Accent */
+    --accent: 340 81% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Instagram Orange for highlights */
+    --highlight: 22 93% 59%;
+    --highlight-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 276 56% 47%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --glass-bg: 220 30% 98% / 0.85;
+    --glass-border: 220 20% 90% / 0.6;
+    --hero-gradient: linear-gradient(135deg, hsl(276 56% 47% / 0.03) 0%, hsl(340 81% 54% / 0.04) 50%, hsl(22 93% 59% / 0.03) 100%);
+    --card-glow: 0 8px 32px -8px rgba(0,0,0,0.08); /* Removed purple */
+    --card-glow-hover: 0 16px 48px -12px rgba(0,0,0,0.12); /* Removed purple hover */
+    
+    /* Instagram Gradient for CTAs */
+    --instagram-gradient: linear-gradient(90deg, #833AB4, #E1306C, #F77737);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 276 56% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 276 56% 47%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 220 14% 96%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 276 56% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 340 81% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 220 14% 96%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 276 56% 55%;
+
+    --glass-bg: 217 33% 12% / 0.8;
+    --glass-border: 217 33% 20% / 0.5;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 276 56% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 276 56% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-border/40 shadow-lg;
+    box-shadow: var(--card-glow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    box-shadow: var(--card-glow-hover), 0 0 0 2px hsl(var(--primary) / 0.4);
+    @apply border-primary/30;
+    transform: translateY(-2px);
+  }
+
+  /* Remove the purple ring override for the instagram-bordered popular card */
+  .instagram-border.glass-card:hover {
+    box-shadow: none;
+    border-color: transparent;
+    transform: translateY(-4px);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Instagram gradient text */
+  .gradient-text {
+    background: var(--instagram-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Instagram gradient button */
+  .btn-instagram {
+    background: linear-gradient(90deg, #833AB4, #E1306C, #F77737, #E1306C, #833AB4);
+    background-size: 200% 100%;
+    @apply text-white font-semibold shadow-lg border-0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-instagram:hover {
+    background-position: 100% 0;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 24px -6px rgba(225, 48, 108, 0.4);
+  }
+
+  .hero-gradient {
+    background: var(--hero-gradient);
+    position: relative;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(340 81% 54% / 0.06), transparent);
+    pointer-events: none;
+  }
+
+  /* Animated underline for links */
+  .nav-link-underline {
+    position: relative;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: var(--instagram-gradient);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Animated badge */
+  .badge-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .badge-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg, hsl(var(--primary) / 0.2), hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.2));
+    border-radius: inherit;
+    z-index: -1;
+    animation: badge-pulse 3s ease-in-out infinite;
+  }
+
+  /* Stats highlight with Instagram gradient */
+  .stat-value {
+    background: var(--instagram-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Instagram accent border */
+  .instagram-border {
+    position: relative;
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+  }
+
+  .instagram-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--instagram-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: padding 0.3s ease;
+  }
+
+  .instagram-border:hover::before {
+    padding: 3px;
+    background: linear-gradient(135deg, #833AB4, #E1306C, #F77737, #E1306C, #833AB4);
+    background-size: 200% 200%;
+    animation: instagram-border-spin 2s linear infinite;
+  }
+
+  .instagram-border:hover {
+    box-shadow:
+      0 0 0 3px rgba(131, 58, 180, 0.15),
+      0 0 24px 4px rgba(225, 48, 108, 0.25),
+      0 0 48px 8px rgba(247, 119, 55, 0.12),
+      0 20px 48px -12px rgba(131, 58, 180, 0.3);
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes instagram-border-spin {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
