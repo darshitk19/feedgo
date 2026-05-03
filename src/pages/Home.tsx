@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { InfiniteMarquee } from "@/components/ui/infinite-marquee";
+import { Testimonials } from "@/components/sections/Testimonials";
 
 const problems = [
   {
@@ -200,6 +201,9 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* CTA Section - Instagram Gradient */}
       <section className="section-padding relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #833AB4, #E1306C, #F77737)' }}>

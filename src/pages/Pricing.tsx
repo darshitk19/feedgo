@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 const plans = [
   {
     name: "Starter",
-    price: "₹1,500",
+    price: "₹1,200",
     period: "/month",
     description: "Best for building an initial social presence.",
     features: [
@@ -24,7 +24,7 @@ const plans = [
   },
   {
     name: "Growth",
-    price: "₹5,000",
+    price: "₹4,000",
     period: "/month",
     description: "Ideal for dominating reach with video content.",
     features: [
@@ -39,7 +39,7 @@ const plans = [
   {
     name: "Custom",
     price: "Tailored to You",
-    period: "",
+    period: "/month",
     description: "Completely customizable growth strategy.",
     features: [
       "Customizable Post Count",
@@ -66,11 +66,11 @@ const fadeUpItem: Variants = {
 };
 
 const Pricing = () => {
-  const [budget, setBudget] = useState(2000);
+  const [budget, setBudget] = useState(800);
   const [userName, setUserName] = useState("");
   
-  const posts = Math.floor((budget / 1000) * 4);
   const videos = Math.floor(budget / 2000);
+  const posts = Math.floor((budget - (videos * 1200)) / 200);
 
   const getWhatsAppLink = () => {
     const namePrefix = userName ? `Hi, I'm ${userName}. ` : "Hi, ";
@@ -167,17 +167,27 @@ Videos: ${videos}`;
                           </div>
 
                           <div className="space-y-4">
-                            <div className="flex justify-between items-center bg-primary/5 p-3 rounded-xl border border-primary/10">
-                              <span className="text-sm font-semibold text-muted-foreground">Custom Budget:</span>
-                              <span className="text-xl font-bold text-primary">
-                                ₹{budget.toLocaleString('en-IN')}
-                              </span>
+                            <div className="flex justify-between items-center bg-primary/5 p-4 rounded-[2rem] border border-primary/10 shadow-sm">
+                              <span className="text-base font-bold text-muted-foreground ml-2">Custom Budget:</span>
+                              <div className="flex items-center gap-3">
+                                <span className="text-2xl font-bold text-primary">₹</span>
+                                <Input
+                                  type="text"
+                                  value={budget === 0 ? "" : budget}
+                                  onChange={(e) => {
+                                    const val = e.target.value.replace(/[^0-9]/g, "");
+                                    setBudget(val === "" ? 0 : parseInt(val));
+                                  }}
+                                  placeholder="0"
+                                  className="w-32 h-12 bg-white border-2 border-primary/20 rounded-2xl text-right font-bold text-primary text-xl px-5 focus-visible:ring-primary/20 transition-all shadow-sm"
+                                />
+                              </div>
                             </div>
                             <Slider
-                              defaultValue={[2000]}
+                              defaultValue={[800]}
                               max={50000}
-                              min={500}
-                              step={500}
+                              min={800}
+                              step={100}
                               value={[budget]}
                               onValueChange={(val) => setBudget(val[0])}
                               className="py-4 cursor-pointer"
