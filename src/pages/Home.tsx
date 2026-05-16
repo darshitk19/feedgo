@@ -88,11 +88,11 @@ const Home = () => {
             animate="show"
           >
             <motion.h1 variants={textReveal} className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl font-display leading-tight text-foreground max-w-5xl mx-auto pb-2">
-              Replace Hours <span className="gradient-text">with Algorithms</span>
+              The AI Content <span className="gradient-text">& Social Media Agency</span>
             </motion.h1>
 
             <motion.p variants={textReveal} className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Stop struggling with content creation. We manage your complete social media presence, delivering high-end visuals and algorithm-beating strategies while you focus on your business.
+              Feedgo is a premium social media marketing agency specializing in AI-powered content creation. We manage your complete social presence with high-retention reels and stunning visuals that drive growth.
             </motion.p>
 
             <motion.div variants={textReveal} className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
